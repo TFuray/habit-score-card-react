@@ -1,16 +1,10 @@
-import ListItem from "./ListItem"
+import ListItem from './ListItem.jsx'
 
-const MainList = ({items}) => {
+const MainList = ({ mainList }) => {
   return (
-  <div>
-    {items.length ? (
-      <ListItem
-      items={items}
-      />
-    ):(
-      <p>Your list is empty</p>
-    )}
-  </div>
+    <div>
+      {mainList.length ? <ListItem mainList={mainList} /> : <p>List Empty</p>}
+    </div>
   )
 }
 

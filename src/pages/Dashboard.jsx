@@ -3,12 +3,17 @@ import InputHabit from '../components/InputHabit'
 import MainList from '../components/MainList'
 
 const Dashboard = () => {
-  const [newItem, setNewItem] = useState('')
   const [mainList, setMainList] = useState(
-    JSON.parse(localStorage.getItem('habitList' || []))
+    JSON.parse(localStorage.getItem('habitList')) || []
   )
-  const [badList, setBadList] = useState([])
-  const [goodList, setGoodList] = useState([])
+  const [badList, setBadList] = useState(
+    JSON.parse(localStorage.getItem('badHabitList')) || []
+  )
+  const [goodList, setGoodList] = useState(
+    JSON.parse(localStorage.getItem('goodHabitList')) || []
+  )
+  const [newItem, setNewItem] = useState('')
+
 
   const setAndSaveItems = newItems => {
     setMainList(newItems)
@@ -22,13 +27,19 @@ const Dashboard = () => {
     setAndSaveItems(listItems)
   }
 
+  // const handleGoodSwitch = id => {
+  //   const bad = mainList.map(item => item.id === id ? {...badList, setBadList(item)} : item)
+
+  // }
+
   const handleSubmit = e => {
     e.preventDefault()
-    if (!newItem) return
+    if (!newItem) {
+      return
+    }
     addItem(newItem)
     setNewItem('')
   }
-
 
   return (
     <div>
@@ -36,11 +47,12 @@ const Dashboard = () => {
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
+        setAndSaveItems={setAndSaveItems}
       />
       <div>
-        <MainList 
-        items={mainList.filter(item => item.item.toLowerCase())}
-        setMainList={setMainList}
+        <MainList
+          mainList={mainList.filter(item => item.item)}
+          setMainList={setMainList}
         />
       </div>
     </div>

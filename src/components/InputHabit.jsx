@@ -1,6 +1,8 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
-const InputHabit = (newItem, setNewItem, handleSubmit) => {
+const InputHabit = ( {handleSubmit, newItem, setNewItem}) => {
+  // const [newItem, setNewItem] = useState('')
+
   const inputRef = useRef()
 
   return (
@@ -18,7 +20,7 @@ const InputHabit = (newItem, setNewItem, handleSubmit) => {
       <button
         type='submit'
         aria-label='Add Item'
-        onClick={() => inpurtRef.current.focus()}
+        onClick={() => inputRef.current.focus()}
       >
         Submit
       </button>
