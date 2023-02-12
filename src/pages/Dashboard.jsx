@@ -51,7 +51,7 @@ const Dashboard = () => {
           handleSubmit={handleSubmit}
         />
       </div>
-      <div className='flex justify-around'>
+      <main className='flex justify-around'>
         <BadList />
         <ListOne
           // mainList={mainList.filter(item => item.item.toLowerCase())}
@@ -59,7 +59,7 @@ const Dashboard = () => {
           setMainList={setMainList}
         />
         <GoodList />
-      </div>
+      </main>
     </div>
   )
 }
