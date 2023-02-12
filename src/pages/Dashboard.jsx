@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import InputHabit from '../components/InputHabit'
-import MainList from '../components/MainList'
+import ListOne from '../components/ListOne'
 
 const Dashboard = () => {
   const [mainList, setMainList] = useState(
@@ -47,10 +47,10 @@ const Dashboard = () => {
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
-        setAndSaveItems={setAndSaveItems}
       />
       <div>
-        <MainList
+        <ListOne
+          // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
           setMainList={setMainList}
         />

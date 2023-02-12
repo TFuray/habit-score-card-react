@@ -1,9 +1,9 @@
 
-const ListItem = ({mainList}) => {
+const ListItem = ({item}) => {
   return (
   <li>
-    <button className="btn btn-outline btn-warning">Bad Habbit</button>
-    <p>{mainList.item}</p>
+    <button className="btn btn-outline btn-warning btn-sm">Bad Habbit</button>
+    <p className="text-lg">{item.item}</p>
   </li>
   )
 }
