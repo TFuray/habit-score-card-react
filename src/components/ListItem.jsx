@@ -1,10 +1,11 @@
-
-const ListItem = ({item}) => {
+const ListItem = ({ item }) => {
   return (
-  <li>
-    <button className="btn btn-outline btn-warning btn-sm">Bad Habbit</button>
-    <p className="text-lg">{item.item}</p>
-  </li>
+    <li className='flex gap-x-8 gap-y-4 justify-between'>
+      <button className='btn btn-outline btn-error btn-sm'>Bad Habbit</button>
+      <p className='text-lg'>{item.item}</p>
+      
+      <button className="btn btn-outline btn-secondary btn-sm">Good Habit</button>
+    </li>
   )
 }
 

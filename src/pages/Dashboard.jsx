@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import InputHabit from '../components/InputHabit'
 import ListOne from '../components/ListOne'
+import GoodList from '../components/GoodList'
+import BadList from '../components/BadList'
 
 const Dashboard = () => {
   const [mainList, setMainList] = useState(
@@ -13,7 +15,6 @@ const Dashboard = () => {
     JSON.parse(localStorage.getItem('goodHabitList')) || []
   )
   const [newItem, setNewItem] = useState('')
-
 
   const setAndSaveItems = newItems => {
     setMainList(newItems)
@@ -43,17 +44,21 @@ const Dashboard = () => {
 
   return (
     <div>
-      <InputHabit
-        newItem={newItem}
-        setNewItem={setNewItem}
-        handleSubmit={handleSubmit}
-      />
-      <div>
+      <div className='flex justify-center my-16'>
+        <InputHabit
+          newItem={newItem}
+          setNewItem={setNewItem}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+      <div className='flex justify-around'>
+        <BadList />
         <ListOne
           // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
           setMainList={setMainList}
         />
+        <GoodList />
       </div>
     </div>
   )
