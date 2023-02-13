@@ -20,10 +20,12 @@ const Dashboard = () => {
     setMainList(newItems)
     localStorage.setItem('habitList', JSON.stringify(newItems))
   }
-  const setAndSavebadItems = newItems => {
-    setBadList(newItems) 
+
+  const setAndSaveBadItems = newItems => {
+    setBadList(newItems)
     localStorage.setItem('badHabitList', JSON.stringify(newItems))
   }
+ 
 
   const addItem = item => {
     const id = mainList.length ? mainList[mainList.length - 1].id + 1 : 1
@@ -33,10 +35,10 @@ const Dashboard = () => {
   }
 
   const handleBadSwitch= id => {
-    const habitBad = mainList.map(item => item.id === id)
-    const addBad = [...badList, habitBad]
-    setAndSavebadItems(addBad)
-
+    const badFilter = mainList.filter(item => item.id === id)
+    console.log(badFilter)
+    const badItems = [...badList, badFilter]
+    setAndSaveBadItems(badItems)
   }
 
   const handleSubmit = e => {
@@ -58,7 +60,9 @@ const Dashboard = () => {
         />
       </div>
       <main className='flex justify-around'>
-        <BadList />
+        <BadList
+        badList={badList.filter(item => item.item)}
+        />
         <ListOne
           // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
