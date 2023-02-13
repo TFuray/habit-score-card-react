@@ -20,6 +20,10 @@ const Dashboard = () => {
     setMainList(newItems)
     localStorage.setItem('habitList', JSON.stringify(newItems))
   }
+  const setAndSavebadItems = newItems => {
+    setBadList(newItems) 
+    localStorage.setItem('badHabitList', JSON.stringify(newItems))
+  }
 
   const addItem = item => {
     const id = mainList.length ? mainList[mainList.length - 1].id + 1 : 1
@@ -28,10 +32,12 @@ const Dashboard = () => {
     setAndSaveItems(listItems)
   }
 
-  // const handleGoodSwitch = id => {
-  //   const bad = mainList.map(item => item.id === id ? {...badList, setBadList(item)} : item)
+  const handleBadSwitch= id => {
+    const habitBad = mainList.map(item => item.id === id)
+    const addBad = [...badList, habitBad]
+    setAndSavebadItems(addBad)
 
-  // }
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -57,6 +63,7 @@ const Dashboard = () => {
           // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
           setMainList={setMainList}
+          handleBadSwitch={handleBadSwitch}
         />
         <GoodList />
       </main>
