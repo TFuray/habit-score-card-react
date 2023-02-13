@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import InputHabit from '../components/InputHabit'
-import ListOne from '../components/ListOne'
-import GoodList from '../components/GoodList'
-import BadList from '../components/BadList'
+import ListOne from '../components/mainList/ListOne'
+import GoodList from '../components/goodList/GoodList'
+import BadList from '../components/badList/BadList'
 
 const Dashboard = () => {
   const [mainList, setMainList] = useState(
