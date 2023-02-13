@@ -25,6 +25,11 @@ const Dashboard = () => {
     setBadList(newItems)
     localStorage.setItem('badHabitList', JSON.stringify(newItems))
   }
+
+  const setAndSaveGoodItems = newItems => {
+    setGoodList(newItems)
+    localStorage.setItem('goodHabitList', JSON.stringify(newItems))
+  }
  
 
   const addItem = item => {
@@ -36,9 +41,22 @@ const Dashboard = () => {
 
   const handleBadSwitch= id => {
     const badFilter = mainList.filter(item => item.id === id)
-    console.log(badFilter)
-    const badItems = [...badList, badFilter]
-    setAndSaveBadItems(badItems)
+    console.log(badList.length)
+    const Id = badList.length ? badList.length + 1 : 1
+    const item = badFilter[0].item
+    const newBadItem = {Id, item}
+    const listBadItems = [...badList, newBadItem]
+    setAndSaveBadItems(listBadItems)
+  }
+
+  const handleGoodSwitch= id => {
+    const goodFilter = mainList.filter(item => item.id === id)
+    console.log(goodFilter)
+    const Id = goodList.length ? goodList.length + 1 : 1
+    const item = goodFilter[0].item
+    const newGoodItem = {Id, item}
+    const listGoodItems = [...goodList, newGoodItem]
+    setAndSaveGoodItems(listGoodItems)
   }
 
   const handleSubmit = e => {
@@ -51,7 +69,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <div className='mx-20'>
       <div className='flex justify-center my-16'>
         <InputHabit
           newItem={newItem}
@@ -68,8 +86,9 @@ const Dashboard = () => {
           // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
           handleBadSwitch={handleBadSwitch}
+          handleGoodSwitch={handleGoodSwitch}
         />
-        <BadList
+        <GoodList
           secondaryHabitList={goodList.filter(item => item.item)} 
           title='Good Habits'
         />

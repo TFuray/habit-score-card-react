@@ -5,7 +5,7 @@ const BadListContent = ({secondaryHabitList}) => {
   <ul className="flex flex-col fap-x-8 gap-y-4">
     {secondaryHabitList.map(item => (
       <BadItem
-      key={item.id}
+      key={item.Id}
       item={item}
       />
     ))}
