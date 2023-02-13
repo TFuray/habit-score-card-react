@@ -37,6 +37,10 @@ const Dashboard = () => {
     localStorage.setItem('habitList', JSON.stringify(mainList))
   }
 
+  const clearLocalStorage = () => {
+    localStorage.clear()
+  }
+
   const addItem = item => {
     const id = mainList.length ? mainList[mainList.length - 1].id + 1 : 0
     const myNewItem = { id, item }
@@ -103,6 +107,7 @@ const Dashboard = () => {
           title='Good Habits'
         />
       </main>
+        <button onClick={clearLocalStorage} className='absolute bottom-10 right-10 btn btn-circle btn-accent'>Reset</button>
     </div>
   )
 }
