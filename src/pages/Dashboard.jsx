@@ -61,15 +61,18 @@ const Dashboard = () => {
       </div>
       <main className='flex justify-around'>
         <BadList
-        badList={badList.filter(item => item.item)}
+        secondaryHabitList={badList.filter(item => item.item)}
+        title='Bad Habits'
         />
         <ListOne
           // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
-          setMainList={setMainList}
           handleBadSwitch={handleBadSwitch}
         />
-        <GoodList />
+        <BadList
+          secondaryHabitList={goodList.filter(item => item.item)} 
+          title='Good Habits'
+        />
       </main>
     </div>
   )
