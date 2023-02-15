@@ -100,7 +100,6 @@ const Dashboard = () => {
           title='Bad Habits'
         />
         <ListOne
-          // mainList={mainList.filter(item => item.item.toLowerCase())}
           mainList={mainList.filter(item => item.item)}
           handleBadSwitch={handleBadSwitch}
           handleGoodSwitch={handleGoodSwitch}
